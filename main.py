@@ -27,16 +27,20 @@ def letterCounter(someString, letterCount):
 def countWords(text):
     words = text.split()
     return len(words)
+
+
 def main():
     book = "./books/frankenstein.txt"
     data = readBookText(book)
     letterCount = {}
     totalWords = countWords(data)
     letterCount = letterCounter(data, letterCount)
-
-    for letter in letterCount:
-        print(f"The count of this {letter}:\n {letterCount[letter]}\n")
-    print(f"The length of letterCount is {len(letterCount)}")
+    print(f"--- Begin Report of {book} ---")
+    print(f"==== Will return the count of words and the count of characters (sorted by largest to least).===")
+    sortedLetterCount = dict(sorted(letterCount.items(), key=lambda item: item[1], reverse=True))
+    print(f"There were {totalWords} found in the text file.")
+    for letter in sortedLetterCount:
+        print(f"The count of this {letter}: {sortedLetterCount[letter]}")
     # printLotsOText(data)
 
 main()
