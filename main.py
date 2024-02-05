@@ -1,9 +1,17 @@
 import os
 
-data_read = ""
-with open('./books/frankenstein.txt', 'r') as f:
-    data_read = f.read()
-    f.close()
+def readBookText(path):
+    with open(path, 'r') as f:
+        text = f.read()
+        return text
 
-for line in data_read:
-    print(line, end='')
+def printLotsOText(text):
+    for line in text:
+        print(line, end='')
+
+def main():
+    book = "./books/frankenstein.txt"
+    data = readBookText(book)
+    printLotsOText(data)
+
+main()
